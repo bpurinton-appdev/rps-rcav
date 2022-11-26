@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout(false)
+  layout("wrapper.html.erb")
 
   # Add your actions below this line
   # ================================
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       @result = "won"
     end
 
-    render({ :plain => "Hello, world!" })
+    render({ :template => "game_templates/user_rock.html.erb" })
   end
 
   def play_paper
@@ -28,6 +28,8 @@ class ApplicationController < ActionController::Base
     elsif @comp_move == "scissors"
       @result = "lost"
     end
+
+    render({ :template => "game_templates/user_paper.html.erb" })
   end
 
   def play_scissors
@@ -40,9 +42,11 @@ class ApplicationController < ActionController::Base
     elsif @comp_move == "scissors"
       @result = "tied"
     end
+
+    render({ :template => "game_templates/user_scissors.html.erb" })
   end
 
   def homepage
-    render({ :plain => "Hello, world!" })
+    render({ :template => "game_templates/rules.html.erb" })
   end
 end
